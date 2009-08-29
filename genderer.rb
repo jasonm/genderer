@@ -6,22 +6,25 @@ require 'census_file_name_frequencies'
 class Genderer
   def initialize(name_frequencies = CensusFileNameFrequencies.gender_hashes)
     @name_frequencies = name_frequencies
-    # @female_frequencies = name_frequencies["female"]
-    # @male_frequencies   = name_frequencies["male"]
   end
 
   def gender_for(name)
     name = name.upcase
 
-    female_score = score_gender_by(@name_frequencies["female"], name)
-    male_score   = score_gender_by(@name_frequencies["male"],   name)
+    scores_by_gender = {}
+    @name_frequencies.keys.each do |gender|
+      scores_by_gender[gender] = score_gender_by(@name_frequencies[gender], name)
+    end
 
-    if female_score == male_score
-      'unknown'
-    elsif female_score > male_score
-      'female'
+    scores        = scores_by_gender.values
+    winning_score = scores.max
+    tie           = scores.all? { |score| score == winning_score }
+    winner        = scores_by_gender.invert[winning_score]
+
+    if tie
+      "unknown"
     else
-      'male'
+      winner
     end
   end
 
@@ -37,7 +40,6 @@ class Genderer
   end
 
   def frequency_by(hash, name)
-    name = name.upcase
     hash[name] || 0
   end
 end
