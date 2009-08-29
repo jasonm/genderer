@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Genealogy</title>
+<meta name="author" content="Demographic Internet Staff">
+<link rel="stylesheet" href="/main/.in/style.css" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/population/css/poptemplate.css" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+.style1 {font-weight: bold}
+-->
+</style>
+</head>
+<body>
+
+<!-- top banner and navigation bar -->
+<div id="header"> <div id="cb_header">
+<a href="/"><img src="/main/www/img/cb_head.gif" width="639" height="25" border="0" alt="U.S. Census Bureau" /></a>
+</div>
+
+  <div id="local_header">
+    <h1>Genealogy</h1>
+    <form name="gs" id="search" method="get" action="http://search.census.gov/search">
+      <img src="/hhes/www/img/google_logo_lhs.gif" align="middle" alt="Google search" />
+      <!--original location for the image: /hhes/www/img/-->
+      <input type="text" name="q" size="32" maxlength="256" value="" />
+      <input type="submit" name="btnG" value="Search This Site" />
+      <br />
+      <br />
+      <input type="hidden" name="filter" value="0" />
+      <input type="hidden" name="entqr" value="0" />
+      <input type="hidden" name="output" value="xml_no_dtd" />
+      <input type="hidden" name="ud" value="1" />
+      <input type="hidden" name="ie" value="UTF-8" />
+      <input type="hidden" name="client" value="subsite" />
+      <input type="hidden" name="proxystylesheet" value="subsite" />
+      <input type="hidden" name="hq" value="inurl:www.census.gov/genealogy/www/" />
+      <input type="hidden" name="subtitle" value="hhes-xyz" />
+    </form>
+    <ul id="top_nav">
+      <li><a href="/genealogy/www/index.html">Genealogy Main</a></li>
+      <li><a href="/genealogy/www/aboutGenealogy.html">Overview</a></li>
+	  <li><a href="/genealogy/www/agesearch.html">Age Search</a></li>
+	  <li><a href="/genealogy/www/freqnames2k.html">Census 2000 Surnames</a></li>
+
+      <!--<li><a href="/genealogy/www/freqnames.html">1990 Census First Names and Surnames</a></li>
+      <li><a href="/genealogy/www/spanname.html">1990 Census Spanish Surnames</a></li>-->
+	  <li><a href="/genealogy/www/faq.html">FAQ</a></li>
+	  
+    </ul>
+  </div>
+</div>
+<!-- end top banner and navigation bar -->
+<!--end of local_header div-->
+<!--end of header div-->
+<!-- end footer and bottom navigation bar -->
+<!-- main body of page (below banner and above hard rule) -->
+<!-- **************************** -->
+<!-- BEGIN 1st COLUMN (LEFT) HERE -->
+<!-- **************************** -->
+<div id="container">
+  <h2 id="int_page_header">Name Files</h2>
+<p>
+<strong>NOTE: No specific individual information is given.</strong></p>
+<pre>
+       Name                Last modified   Size
+<hr />
+<img src="/genealogy/www/img/doc01.gif" alt="[TXT]" /> <a href="dist.all.last">dist.all.last</a>        09-May-95 23:19     2M  
+<img src="/genealogy/www/img/doc01.gif" alt="[TXT]" /> <a href="dist.female.first">dist.female.first</a>    29-Sep-94 12:23   146K  
+<img src="/genealogy/www/img/doc01.gif" alt="[TXT]" /> <a href="dist.male.first">dist.male.first</a>      29-Sep-94 12:23    41K  
+</pre>
+<hr />
+<p>
+Each of the three files, (dist.all.last), (dist. male.first), and
+(dist female.first) contain four items of data.  The four items
+are:</p>
+<ol>
+  <li>A &quot;Name&quot;</li>
+  <li>Frequency in percent</li>
+  <li>Cumulative Frequency in percent</li>
+  <li>Rank</li>
+</ol>
+<p>
+In the file (dist.all.last) one entry appears as:</p><pre>
+        MOORE       0.312       5.312       9</pre>
+<p>
+In our Search Area sample, MOORE ranks 9th in terms of frequency. 
+5.312 percent of the sample population is covered by MOORE and
+the 8 names occurring more frequently than MOORE.  The surname,
+MOORE, is possessed by 0.312 percent of our population sample.</p>
+<p>
+<a href="nam_meth.txt">Detailed Methodology</a></p>
+<pre>
+---------------------------------------
+Variables in Names Files:
+  name
+  freq = Frequency in percent  
+  cum.freq = Cumulative Frequency in percent
+  rank
+---------------------------------------
+First ten entries in dist.all.last
+---------------------------------------
+name           freq   cum.freq  rank
+SMITH          1.006  1.006      1
+JOHNSON        0.810  1.816      2
+WILLIAMS       0.699  2.515      3
+JONES          0.621  3.136      4
+BROWN          0.621  3.757      5
+DAVIS          0.480  4.237      6
+MILLER         0.424  4.660      7
+WILSON         0.339  5.000      8
+MOORE          0.312  5.312      9
+TAYLOR         0.311  5.623     10
+---------------------------------------
+First ten entries in dist.female.first
+---------------------------------------
+name           freq   cum.freq  rank
+MARY           2.629  2.629      1
+PATRICIA       1.073  3.702      2
+LINDA          1.035  4.736      3
+BARBARA        0.980  5.716      4
+ELIZABETH      0.937  6.653      5
+JENNIFER       0.932  7.586      6
+MARIA          0.828  8.414      7
+SUSAN          0.794  9.209      8
+MARGARET       0.768  9.976      9
+DOROTHY        0.727 10.703     10
+---------------------------------------
+First ten entries in dist.male.first
+---------------------------------------
+name           freq   cum.freq  rank
+JAMES          3.318  3.318      1
+JOHN           3.271  6.589      2
+ROBERT         3.143  9.732      3
+MICHAEL        2.629 12.361      4
+WILLIAM        2.451 14.812      5
+DAVID          2.363 17.176      6
+RICHARD        1.703 18.878      7
+CHARLES        1.523 20.401      8
+JOSEPH         1.404 21.805      9
+THOMAS         1.380 23.185     10
+</pre>
+<p></p>
+</div>
+<div id="foot">
+  <hr />
+Source:  U.S. Census Bureau, Population Division<br />
+<a href="http://ask.census.gov">Questions?</a> / 1-866-758-1060<br />
+
+
+
+<hr />
+  <div id="bottom_nav">
+    <ul>
+      <li><a href="/genealogy/www/index.html">Genealogy Main</a></li>
+      <li><a href="/genealogy/www/aboutGenealogy.html">Overview</a></li>
+	  	  <li><a href="/genealogy/www/agesearch.html">Age Search</a></li>
+	  <li><a href="/genealogy/www/freqnames2k.html">Census 2000 Surnames</a></li>
+
+      <!--<li><a href="/genealogy/www/freqnames.html">1990 Census First Names and Surnames</a></li>
+      <li><a href="/genealogy/www/spanname.html">1990 Census Spanish Surnames</a></li>-->
+	  <li><a href="/genealogy/www/faq.html">FAQ</a></li>	  
+    </ul>
+  </div>
+  <br />
+  <div id="cb_footer">
+
+<span style="height: 0; width: 0;  overflow: hidden;  position: absolute; font-size: 0;"><a href="#SKIP" title="Skip Navigation">Skip this navigation</a></span> <br />
+
+<div style="font: bold 11px Arial, Helvetica, sans-serif; color: #000; text-decoration: none; text-align: center; border-top: 1px solid #0055BB; padding: 6px 0 10px 0;">
+
+Census Bureau Links: &nbsp; <a href="http://www.census.gov/index.html" style="font-weight: normal; text-decoration: underline; color: #05b;" target="_top">Home</a>
+
+&#183; <a href="/main/www/srchtool.html" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Search</a>
+
+&#183; <a href="/main/www/a2z/" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Subjects A-Z</a>
+
+&#183; <a href="https://ask.census.gov/" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">FAQs</a>
+
+&#183; <a href="/main/www/access.html" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Data Tools</a>
+
+&#183; <a href="/mp/www/cat/" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Catalog</a>
+
+&#183; <a href="/2010census/" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Census 2010</a>
+
+&#183; <a href="/quality/" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Quality</a>
+
+&#183; <a href="/privacy/" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Privacy Policy</a>
+
+&#183; <a href="/aboutus/contacts.html" target="_top" style="font-weight: normal; color: #05B; text-decoration: underline; display: inline;">Contact Us</a>
+<br />
+<br />
+<img src="/main/www/img/wordmarktl.gif"  width="217" height="35" alt="U.S. Census Bureau: Helping You Make Informed Decisions" style=" margin-top: -6px;" />
+<a name="SKIP"> </a>
+</div>
+
+<div style="font: normal 11px Arial, Helvetica, sans-serif; color: #000; text-decoration: none; text-align: center;">
+     Page Last Modified: July 17, 2008
+</div>
+
+</div>
+
+<!-- Foresee Survey -->
+<script type="text/javascript" src="/fsrscripts/foresee-trigger.js"></script>
+
+<!-- End Foresee Survey -->
+
+</div>
+</body>
+</html>
+
