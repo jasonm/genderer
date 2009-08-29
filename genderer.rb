@@ -11,15 +11,15 @@ class Genderer
   def gender_for(name)
     name = name.upcase
 
-    scores_by_gender = {}
-    @name_frequencies.keys.each do |gender|
-      scores_by_gender[gender] = score_gender_by(@name_frequencies[gender], name)
+    scores_by_category = {}
+    @name_frequencies.keys.each do |category|
+      scores_by_category[category] = score_category_by(@name_frequencies[category], name)
     end
 
-    scores        = scores_by_gender.values
+    scores        = scores_by_category.values
     winning_score = scores.max
     tie           = scores.all? { |score| score == winning_score }
-    winner        = scores_by_gender.invert[winning_score]
+    winner        = scores_by_category.invert[winning_score]
 
     if tie
       "unknown"
@@ -30,7 +30,7 @@ class Genderer
 
   private
 
-  def score_gender_by(hash, name)
+  def score_category_by(hash, name)
     score = frequency_by(hash, name)
     if score.zero?
       match = WeightedMatch.new(hash.keys, name)
