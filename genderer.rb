@@ -1,15 +1,12 @@
 require 'rubygems'
 require 'amatch'
+require 'weighted_match'
 require 'census_file_name_frequencies'
 
 class Genderer
-  MINIMUM_JARO_WINKLER_MATCH_DISTANCE = 0.75
-
-  attr_accessor :name_frequency_provider
-
-  def initialize(name_frequencies)
+  def initialize(name_frequencies = CensusFileNameFrequencies.gender_hashes)
     @female_frequencies = name_frequencies["female"]
-    @male_frequencies = name_frequencies["male"]
+    @male_frequencies   = name_frequencies["male"]
   end
 
   def gender_for(name)
@@ -32,9 +29,8 @@ class Genderer
   def score_gender_by(hash, name)
     score = frequency_by(hash, name)
     if score.zero?
-      closest_name, match_factor = best_match_and_factor_in(hash.keys, name)
-      match_factor = 0 if match_factor < MINIMUM_JARO_WINKLER_MATCH_DISTANCE
-      score = frequency_by(hash, closest_name) * match_factor
+      match = WeightedMatch.new(hash.keys, name)
+      score = frequency_by(hash, match.best_match) * match.weight
     end
     score
   end
@@ -43,15 +39,4 @@ class Genderer
     name = name.upcase
     hash[name] || 0
   end
-
-  def best_match_and_factor_in(list, item)
-    matcher = Amatch::JaroWinkler.new(item)
-    matcher.ignore_case = true
-    weights = matcher.match(list)
-    best_match_weight = weights.max
-    best_match_index = weights.index(best_match_weight)
-
-    [list[best_match_index], best_match_weight]
-  end
 end
-
