@@ -1,31 +1,8 @@
 require 'rubygems'
 require 'amatch'
-
-module CensusFileNameFrequencies
-  def self.gender_hashes
-    {
-      "male" => hash_from_file_for("male"),
-      "female" => hash_from_file_for("female")
-    }
-  end
-
-  private
-
-  def self.hash_from_file_for(gender)
-    hash = {}
-
-    lines = open("dist.#{gender}.first").readlines.each do |line|
-      name = line.split[0].upcase
-      frequency = line.split[1].to_f
-      hash[name] = frequency
-    end
-
-    hash
-  end
-end
+require 'census_file_name_frequencies'
 
 class Genderer
-
   MINIMUM_JARO_WINKLER_MATCH_DISTANCE = 0.75
 
   attr_accessor :name_frequency_provider
@@ -38,20 +15,8 @@ class Genderer
   def gender_for(name)
     name = name.upcase
 
-    female_score = listed_frequency(@female_frequencies, name)
-    male_score   = listed_frequency(@male_frequencies, name)
-
-    if female_score.zero?
-      closest_name, match_factor = best_match_and_factor_in(@female_frequencies.keys, name)
-      match_factor = 0 if match_factor < MINIMUM_JARO_WINKLER_MATCH_DISTANCE
-      female_score = listed_frequency(@female_frequencies, closest_name) * match_factor
-    end
-
-    if male_score.zero?
-      closest_name, match_factor = best_match_and_factor_in(@male_frequencies.keys, name)
-      match_factor = 0 if match_factor < MINIMUM_JARO_WINKLER_MATCH_DISTANCE
-      male_score = listed_frequency(@male_frequencies, closest_name) * match_factor
-    end
+    female_score = score_gender_by(@female_frequencies, name)
+    male_score   = score_gender_by(@male_frequencies, name)
 
     if female_score == male_score
       'Unknown'
@@ -64,7 +29,17 @@ class Genderer
 
   private
 
-  def listed_frequency(hash, name)
+  def score_gender_by(hash, name)
+    score = frequency_by(hash, name)
+    if score.zero?
+      closest_name, match_factor = best_match_and_factor_in(hash.keys, name)
+      match_factor = 0 if match_factor < MINIMUM_JARO_WINKLER_MATCH_DISTANCE
+      score = frequency_by(hash, closest_name) * match_factor
+    end
+    score
+  end
+
+  def frequency_by(hash, name)
     name = name.upcase
     hash[name] || 0
   end
