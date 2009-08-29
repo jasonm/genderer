@@ -4,7 +4,8 @@ require 'weighted_match'
 require 'census_file_name_frequencies'
 
 class Genderer
-  def initialize(name_frequencies = CensusFileNameFrequencies.gender_hashes)
+  def initialize(name_frequencies =
+                 CensusFileNameFrequencies.gender_hashes)
     @name_frequencies = name_frequencies
   end
 
@@ -13,7 +14,8 @@ class Genderer
 
     scores_by_category = {}
     @name_frequencies.keys.each do |category|
-      scores_by_category[category] = score_category_by(@name_frequencies[category], name)
+      scores_by_category[category] =
+        score_category_by(@name_frequencies[category], name)
     end
 
     scores        = scores_by_category.values
