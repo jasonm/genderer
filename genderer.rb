@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 class Genderer
   def self.gender_for(name)
     self.instance.gender_for(name)
@@ -49,8 +47,3 @@ class Genderer
   end
 end
 
-if ARGV.any?
-  puts Genderer.gender_for(ARGV.first)
-else
-  puts "Usage: ./names.rb name"
-end
