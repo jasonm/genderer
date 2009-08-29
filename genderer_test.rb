@@ -25,37 +25,37 @@ class GendererTest < Test::Unit::TestCase
       })
     end
 
-    should "return M for male name" do
-      assert_equal "M", @genderer.gender_for("James")
+    should "return male for male name" do
+      assert_equal "male", @genderer.gender_for("James")
     end
 
-    should "return F for female name" do
-      assert_equal "F", @genderer.gender_for("Mary")
+    should "return female for female name" do
+      assert_equal "female", @genderer.gender_for("Mary")
     end
 
     should "be case insensitive" do
-      assert_equal "M", @genderer.gender_for("james")
-      assert_equal "M", @genderer.gender_for("JAMES")
+      assert_equal "male", @genderer.gender_for("james")
+      assert_equal "male", @genderer.gender_for("JAMES")
     end
 
     should "give best match for misspelled names" do
-      assert_equal "F", @genderer.gender_for("Linda")
-      assert_equal "F", @genderer.gender_for("Linnad")
+      assert_equal "female", @genderer.gender_for("Linda")
+      assert_equal "female", @genderer.gender_for("Linnad")
 
-      assert_equal "M", @genderer.gender_for("James")
-      assert_equal "M", @genderer.gender_for("Janes")
+      assert_equal "male", @genderer.gender_for("James")
+      assert_equal "male", @genderer.gender_for("Janes")
     end
 
     should "give most likely match for either-gender names" do
-      assert_equal "M", @genderer.gender_for("Bobby")
+      assert_equal "male", @genderer.gender_for("Bobby")
     end
 
     should "return unknown for no match" do
-      assert_equal "Unknown", @genderer.gender_for("Zaphod")
+      assert_equal "unknown", @genderer.gender_for("Zaphod")
     end
 
     should "return unknown for equal match" do
-      assert_equal "Unknown", @genderer.gender_for("Jo")
+      assert_equal "unknown", @genderer.gender_for("Jo")
     end
   end
 
@@ -71,6 +71,6 @@ class GendererTest < Test::Unit::TestCase
     }
 
     genderer = Genderer.new(gender_hash)
-    assert_equal "M", genderer.gender_for("Jarry")
+    assert_equal "male", genderer.gender_for("Jarry")
   end
 end

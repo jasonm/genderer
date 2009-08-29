@@ -5,22 +5,23 @@ require 'census_file_name_frequencies'
 
 class Genderer
   def initialize(name_frequencies = CensusFileNameFrequencies.gender_hashes)
-    @female_frequencies = name_frequencies["female"]
-    @male_frequencies   = name_frequencies["male"]
+    @name_frequencies = name_frequencies
+    # @female_frequencies = name_frequencies["female"]
+    # @male_frequencies   = name_frequencies["male"]
   end
 
   def gender_for(name)
     name = name.upcase
 
-    female_score = score_gender_by(@female_frequencies, name)
-    male_score   = score_gender_by(@male_frequencies, name)
+    female_score = score_gender_by(@name_frequencies["female"], name)
+    male_score   = score_gender_by(@name_frequencies["male"],   name)
 
     if female_score == male_score
-      'Unknown'
+      'unknown'
     elsif female_score > male_score
-      'F'
+      'female'
     else
-      'M'
+      'male'
     end
   end
 
